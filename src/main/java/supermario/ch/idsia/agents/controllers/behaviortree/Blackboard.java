@@ -11,6 +11,8 @@ class Blackboard {
     byte[][] enemies;
 
     int movementSemaphore;
+    float farthestProgress;
+    int farthestProgressTimestamp;
 
     int getMarioEgoPosRow() {
         int[] egoPos = BehaviorTreeAgent.blackboard.environment.getMarioEgoPos();

@@ -171,6 +171,8 @@ public void setReplayer(Replayer recorder);
 
 public int getTimeSpent();
 
+public int getTimeLeft();
+
 public byte[][] getScreenCapture();
 
 void saveLastRun(String filename);

@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <sequence>
 
     <!-- Move left or right -->
     <selector>
+        <!-- Movement Locked? (Happens when were still processing previous movements) -->
         <sequence>
             <movementlocked/>
             <decrementmovementlock/>
         </sequence>
-
+        <!-- running out of time, move right. -->
         <sequence>
-            <coinbehind/>
-            <left/>
-            <setmovementlock/>
+            <timerunningout tolerance="20"/>
+            <right/>
         </sequence>
-
+        <!-- wasting time? Let's make some progress -->
         <sequence>
-            <enemyahead/>
+            <wastingtime tolerance="8"/>
+            <right/>
+        </sequence>
+        <!-- Go back to grab coin? -->
+        <sequence>
+            <coinleft distance="5"/>
+            <left/>
+            <setmovementlock ticks="20"/>
+        </sequence>
+        <!-- Missed an enemy? -->
+        <sequence>
+            <enemyleft distance="5"/>
+            <left/>
+            <setmovementlock ticks="20"/>
+        </sequence>
+        <!-- avoid enemy ahead? -->
+        <sequence>
+            <enemyahead distance="3"/>
             <reversedirection/>
         </sequence>
-
+        <!-- otherwise move right. -->
         <right/>
     </selector>
 
@@ -30,7 +48,6 @@
         </sequence>
         <shootcomplete/>
     </selector>
-
 
     <!--  Land or jump  -->
     <selector>

@@ -1,14 +1,17 @@
 package supermario.ch.idsia.agents.controllers.behaviortree;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="setmovementlock")
 public class SetMovementSemaphoreAction implements TreeTask {
-    public static final int LOCK_TICKS = 20;
+
+    @XmlAttribute(name="ticks")
+    private int lockTicks;
 
     @Override
     public boolean run() {
-        BehaviorTreeAgent.blackboard.movementSemaphore = LOCK_TICKS;
+        BehaviorTreeAgent.blackboard.movementSemaphore = lockTicks;
         return true;
     }
 }

@@ -18,7 +18,8 @@ public class BehaviorTreeScenario {
                 Selector.class, Sequence.class,
 
                 CanJumpCondition.class, DoneJumpingCondition.class, CanShootCondition.class, EnemyAheadCondition.class,
-                CoinBehindCondition.class, MovementLockedCondition.class,
+                EnemyLeftCondition.class, CoinLeftCondition.class, MovementLockedCondition.class, WastingTimeCondition.class,
+                RunningOutOfTimeCondition.class,
 
                 JumpAction.class, LandAction.class, RightAction.class, LeftAction.class, ReverseDirectionAction.class,
                 ShootAction.class, ShootCompleteAction.class, DecrementMovementSemaphoreAction.class, SetMovementSemaphoreAction.class

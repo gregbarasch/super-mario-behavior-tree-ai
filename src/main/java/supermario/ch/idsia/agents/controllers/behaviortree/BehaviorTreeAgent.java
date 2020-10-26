@@ -33,16 +33,17 @@ public class BehaviorTreeAgent implements Agent {
 
     @Override
     public void integrateObservation(Environment environment) {
+        // First observation
         blackboard.environment = environment;
         blackboard.levelScene = environment.getLevelSceneObservationZ(Z_LEVEL_SCENE);
         blackboard.enemies = environment.getEnemiesObservationZ(Z_LEVEL_ENEMIES);
+
+        float[] marioPos = blackboard.environment.getMarioFloatPos();
+        if (marioPos[0] > blackboard.farthestProgress) {
+            blackboard.farthestProgress = marioPos[0];
+            blackboard.farthestProgressTimestamp = environment.getTimeSpent();
+        }
     }
-
-    @Override
-    public void giveIntermediateReward(float intermediateReward) {}
-
-    @Override
-    public void setObservationDetails(final int rfWidth, final int rfHeight, final int egoRow, final int egoCol) {}
 
     @Override
     public String getName() {
@@ -53,4 +54,10 @@ public class BehaviorTreeAgent implements Agent {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public void giveIntermediateReward(float intermediateReward) {}
+
+    @Override
+    public void setObservationDetails(final int rfWidth, final int rfHeight, final int egoRow, final int egoCol) {}
 }
