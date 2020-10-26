@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sequence>
+    <forward/>
+
+    <!-- Fireball -->
+    <selector>
+        <sequence>
+            <canshoot/>
+            <shoot/>
+        </sequence>
+
+        <shootcomplete/>
+    </selector>
+
+
+    <!--  Land or jump  -->
+    <selector>
+        <!-- Land -->
+        <sequence>
+            <isjumpfinished/>
+            <land/>
+        </sequence>
+        <!-- Jump -->
+        <sequence>
+            <canjump/>
+            <jump/>
+        </sequence>
+    </selector>
+
+</sequence>

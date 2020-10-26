@@ -46,7 +46,7 @@ public static void main(String[] args)
 {
     MarioAIOptions marioAIOptions = new MarioAIOptions(args);
     marioAIOptions.setMarioInvulnerable(true);
-    String options = "-lf on -zs 1 -ls 16 -vis 1";
+    String options = "-lf on -zs 1 -ls 16 -vis on";
     System.out.print(options);
     Environment environment = MarioEnvironment.getInstance();
     Agent agent = new ForwardAgent();

@@ -835,7 +835,7 @@ public static void gainCoin()
 {
     coins++;
     levelScene.appendBonusPoints(MarioEnvironment.IntermediateRewardsSystemOfValues.coins);
-//        if (coins % 100 == 0)
+//        if (  coins % 100 == 0)
 //            get1Up();
 }
 
