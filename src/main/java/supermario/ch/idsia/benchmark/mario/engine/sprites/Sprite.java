@@ -145,6 +145,41 @@ public static String getNameByKind(final int kind)
     return "Unknown";
 }
 
+public static boolean isStompableCreatureSprite(int kind) {
+    switch (kind) {
+        case Sprite.KIND_GOOMBA:
+        case Sprite.KIND_GOOMBA_WINGED:
+        case Sprite.KIND_RED_KOOPA:
+        case Sprite.KIND_RED_KOOPA_WINGED:
+        case Sprite.KIND_GREEN_KOOPA:
+        case Sprite.KIND_GREEN_KOOPA_WINGED:
+        case Sprite.KIND_BULLET_BILL:
+        case Sprite.KIND_WAVE_GOOMBA:
+            return true;
+        default:
+            return false;
+    }
+}
+
+public static boolean isCreatureSprite(int kind) {
+    switch (kind) {
+        case Sprite.KIND_GOOMBA:
+        case Sprite.KIND_GOOMBA_WINGED:
+        case Sprite.KIND_RED_KOOPA:
+        case Sprite.KIND_RED_KOOPA_WINGED:
+        case Sprite.KIND_GREEN_KOOPA:
+        case Sprite.KIND_GREEN_KOOPA_WINGED:
+        case Sprite.KIND_BULLET_BILL:
+        case Sprite.KIND_SPIKY:
+        case Sprite.KIND_SPIKY_WINGED:
+        case Sprite.KIND_ENEMY_FLOWER:
+        case Sprite.KIND_WAVE_GOOMBA:
+            return true;
+        default:
+            return false;
+    }
+}
+
 public float iceScale(final float ice)
 {
     return ice;

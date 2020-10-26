@@ -25,15 +25,15 @@
             <left/>
             <setmovementlock ticks="20"/>
         </sequence>
-        <!-- Missed an enemy? -->
+        <!-- Missed a stompable enemy? -->
         <sequence>
-            <enemyleft distance="5"/>
+            <stompableenemyleft distance="5"/>
             <left/>
             <setmovementlock ticks="20"/>
         </sequence>
         <!-- avoid enemy ahead? -->
         <sequence>
-            <enemyahead distance="3"/>
+            <enemyahead distance="2"/>
             <reversedirection/>
         </sequence>
         <!-- otherwise move right. -->

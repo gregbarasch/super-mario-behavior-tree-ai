@@ -1,5 +1,7 @@
 package supermario.ch.idsia.agents.controllers.behaviortree;
 
+import supermario.ch.idsia.benchmark.mario.engine.sprites.Sprite;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -15,8 +17,8 @@ public class EnemyLeftCondition implements TreeTask {
         int col = BehaviorTreeAgent.blackboard.getMarioEgoPosCol();
 
         for (int i = 1; i <= searchDistance; i++) {
-            boolean enemyLeft = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row, col-i) != 0;
-            if (enemyLeft) {
+            int spriteLeft = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row, col-i);
+            if (Sprite.isCreatureSprite(spriteLeft)) {
                 return true;
             }
         }
