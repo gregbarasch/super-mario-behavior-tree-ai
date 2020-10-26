@@ -1,16 +1,18 @@
 package supermario.ch.idsia.agents.controllers.behaviortree;
 
 import supermario.ch.idsia.benchmark.mario.engine.sprites.Sprite;
-import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="enemyahead")
-public class EnemyAheadCondition implements TreeTask {
+@XmlRootElement(name="enemynear")
+public class EnemyNearCondition implements TreeTask {
 
-    @XmlAttribute(name="distance")
-    private int aheadDistanceDistance;
+    @XmlAttribute(name="left")
+    private int leftDistance;
+
+    @XmlAttribute(name="right")
+    private int rightDistance;
 
     @XmlAttribute(name="down")
     private int downDistance;
@@ -26,13 +28,24 @@ public class EnemyAheadCondition implements TreeTask {
         int row = BehaviorTreeAgent.blackboard.getMarioEgoPosRow();
         int col = BehaviorTreeAgent.blackboard.getMarioEgoPosCol();
 
-        int colItr = BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
-
-        for (int i = colItr; i-colItr != colItr*aheadDistanceDistance; i+=colItr) {
-
+        for (int i = 1; i <= leftDistance+1; i++) {
             for (int j = 0; j <= upDistance; j++) {
                 int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row+j, col-i);
                 if (isEnemyOfInterest(sprite)) return true;
+            }
+
+            for (int j = 1; j <= downDistance; j++) {
+                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row-j, col-i);
+                if (isEnemyOfInterest(sprite)) return true;
+            }
+        }
+
+        for (int i = 1; i < rightDistance+1; i++) {
+
+            for (int j = 0; j <= upDistance; j++) {
+                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row+j, col+i);
+                if (isEnemyOfInterest(sprite)) return true;
+
             }
 
             for (int j = 1; j <= downDistance; j++) {

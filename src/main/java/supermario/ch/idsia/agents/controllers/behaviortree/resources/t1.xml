@@ -12,32 +12,32 @@
         <!-- running out of time, move right. -->
         <sequence>
             <timerunningout tolerance="20"/>
-            <right/>
+            <move>right</move>
         </sequence>
         <!-- wasting time? Let's make some progress -->
         <sequence>
             <wastingtime tolerance="8"/>
-            <right/>
+            <move>right</move>
         </sequence>
         <!-- Go back to grab coin? -->
         <sequence>
-            <coinleft distance="5"/>
-            <left/>
+            <coinnear left="5" up="3" down="3"/>
+            <move>left</move>
             <setmovementlock ticks="20"/>
         </sequence>
         <!-- Missed a stompable enemy? -->
         <sequence>
-            <stompableenemyleft distance="5"/>
-            <left/>
+            <enemynear left="4" down="3" stompable="true"/>
+            <move>left</move>
             <setmovementlock ticks="20"/>
         </sequence>
         <!-- avoid enemy ahead? -->
         <sequence>
-            <enemyahead distance="2"/>
-            <reversedirection/>
+            <enemyahead distance="4" up="4"/>
+            <move>reverse</move>
         </sequence>
         <!-- otherwise move right. -->
-        <right/>
+        <move>right</move>
     </selector>
 
     <!-- Nonstop fireballs -->
