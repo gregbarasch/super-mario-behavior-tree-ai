@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="jump")
 public class JumpAction implements TreeTask {
     @Override
-    public boolean run(Environment environment, boolean[] action) {
-        action[Environment.MARIO_KEY_JUMP] = true;
+    public boolean run() {
+        BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_JUMP] = true;
         return true;
     }
 }

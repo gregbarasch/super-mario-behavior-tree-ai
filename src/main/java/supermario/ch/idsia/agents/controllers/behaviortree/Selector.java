@@ -12,9 +12,9 @@ public class Selector implements TreeTask {
     private TreeTask[] children;
 
     @Override
-    public boolean run(Environment environment, boolean[] action) {
+    public boolean run() {
         for (TreeTask child : children) {
-            if (child.run(environment, action)) {
+            if (child.run()) {
                 return true;
             }
         }

@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="forward")
 public class ForwardAction implements TreeTask {
     @Override
-    public boolean run(Environment environment, boolean[] action) {
-        action[Environment.MARIO_KEY_RIGHT] = true;
+    public boolean run() {
+        BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] = true;
         return true;
     }
 }

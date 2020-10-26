@@ -8,8 +8,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="shoot")
 public class ShootAction implements TreeTask {
     @Override
-    public boolean run(Environment environment, boolean[] action) {
-        action[Environment.MARIO_KEY_SPEED] = true;
+    public boolean run() {
+        BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_SPEED] = true;
         return true;
     }
 }

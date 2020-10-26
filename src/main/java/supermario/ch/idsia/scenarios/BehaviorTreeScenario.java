@@ -9,7 +9,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.Random;
 
 public class BehaviorTreeScenario {
 
@@ -44,13 +43,5 @@ public class BehaviorTreeScenario {
             agent.giveIntermediateReward(environment.getIntermediateReward());
             environment.performAction(agent.getAction());
         }
-
-        // Evaluation
-        System.out.println("Evaluation Info:");
-        int[] ev = environment.getEvaluationInfoAsInts();
-        for (int anEv : ev) {
-            System.out.print(anEv + ", ");
-        }
-        System.out.println();
     }
 }
