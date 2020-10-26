@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <sequence>
-    <forward/>
 
-    <!-- Fireball -->
+    <!-- Move left or right -->
+    <selector>
+        <sequence>
+            <movementlocked/>
+            <decrementmovementlock/>
+        </sequence>
+
+        <sequence>
+            <coinbehind/>
+            <left/>
+            <setmovementlock/>
+        </sequence>
+
+        <sequence>
+            <enemyahead/>
+            <reversedirection/>
+        </sequence>
+
+        <right/>
+    </selector>
+
+    <!-- Nonstop fireballs -->
     <selector>
         <sequence>
             <canshoot/>
             <shoot/>
         </sequence>
-
         <shootcomplete/>
     </selector>
 

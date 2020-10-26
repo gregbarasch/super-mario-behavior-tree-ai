@@ -10,11 +10,17 @@ class Blackboard {
     byte[][] levelScene;
     byte[][] enemies;
 
-    int marioEgoRow;
-    int marioEgoCol;
-    int receptiveFieldWidth;
-    int receptiveFieldHeight;
+    int movementSemaphore;
 
+    int getMarioEgoPosRow() {
+        int[] egoPos = BehaviorTreeAgent.blackboard.environment.getMarioEgoPos();
+        return egoPos[0];
+    }
+
+    int getMarioEgoPosCol() {
+        int[] egoPos = BehaviorTreeAgent.blackboard.environment.getMarioEgoPos();
+        return egoPos[1];
+    }
 
     int getEnemiesCellValue(int x, int y) {
         if (x < 0 || x >= levelScene.length || y < 0 || y >= levelScene[0].length)

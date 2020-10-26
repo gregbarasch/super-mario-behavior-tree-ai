@@ -16,8 +16,12 @@ public class BehaviorTreeScenario {
         // JAXB
         JAXBContext context = JAXBContext.newInstance(
                 Selector.class, Sequence.class,
-                CanJumpCondition.class, DoneJumpingCondition.class, CanShootCondition.class,
-                JumpAction.class, LandAction.class, ForwardAction.class,  ShootAction.class, ShootCompleteAction.class
+
+                CanJumpCondition.class, DoneJumpingCondition.class, CanShootCondition.class, EnemyAheadCondition.class,
+                CoinBehindCondition.class, MovementLockedCondition.class,
+
+                JumpAction.class, LandAction.class, RightAction.class, LeftAction.class, ReverseDirectionAction.class,
+                ShootAction.class, ShootCompleteAction.class, DecrementMovementSemaphoreAction.class, SetMovementSemaphoreAction.class
         );
         Unmarshaller unmarshaller = context.createUnmarshaller();
 

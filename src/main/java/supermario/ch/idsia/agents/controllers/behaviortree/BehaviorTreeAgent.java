@@ -9,8 +9,8 @@ public class BehaviorTreeAgent implements Agent {
     private final TreeTask root;
     private String name;
 
-    private int zLevelScene = 1;
-    private int zLevelEnemies = 0;
+    private static final int Z_LEVEL_SCENE = 1;
+    private static final int Z_LEVEL_ENEMIES = 0;
 
     public BehaviorTreeAgent(String name, TreeTask root) {
         this.name = name;
@@ -34,21 +34,15 @@ public class BehaviorTreeAgent implements Agent {
     @Override
     public void integrateObservation(Environment environment) {
         blackboard.environment = environment;
-        blackboard.levelScene = environment.getLevelSceneObservationZ(zLevelScene);
-        blackboard.enemies = environment.getEnemiesObservationZ(zLevelEnemies);
+        blackboard.levelScene = environment.getLevelSceneObservationZ(Z_LEVEL_SCENE);
+        blackboard.enemies = environment.getEnemiesObservationZ(Z_LEVEL_ENEMIES);
     }
 
     @Override
     public void giveIntermediateReward(float intermediateReward) {}
 
     @Override
-    public void setObservationDetails(final int rfWidth, final int rfHeight, final int egoRow, final int egoCol) {
-        blackboard.receptiveFieldWidth = rfWidth;
-        blackboard.receptiveFieldHeight = rfHeight;
-
-        blackboard.marioEgoRow = egoRow;
-        blackboard.marioEgoCol = egoCol;
-    }
+    public void setObservationDetails(final int rfWidth, final int rfHeight, final int egoRow, final int egoCol) {}
 
     @Override
     public String getName() {

@@ -4,10 +4,11 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="forward")
-public class ForwardAction implements TreeTask {
+@XmlRootElement(name="right")
+public class RightAction implements TreeTask {
     @Override
     public boolean run() {
+        BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_LEFT] = false;
         BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] = true;
         return true;
     }
