@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="isjumpfinished")
 public class DoneJumpingCondition implements TreeTask {
     @Override
-    public boolean run(GameStateDto gameStateDto) {
-        return gameStateDto.environment.isMarioOnGround() && gameStateDto.action[Environment.MARIO_KEY_JUMP];
+    public boolean run(TaskDto taskDto) {
+        return taskDto.environment.isMarioOnGround() && taskDto.action[Environment.MARIO_KEY_JUMP];
     }
 }

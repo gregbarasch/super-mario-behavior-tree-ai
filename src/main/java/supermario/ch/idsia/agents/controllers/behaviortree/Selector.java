@@ -10,9 +10,9 @@ public class Selector implements TreeTask {
     private TreeTask[] children;
 
     @Override
-    public boolean run(GameStateDto gameStateDto) {
+    public boolean run(TaskDto taskDto) {
         for (TreeTask child : children) {
-            if (child.run(gameStateDto)) {
+            if (child.run(taskDto)) {
                 return true;
             }
         }

@@ -21,28 +21,28 @@ public class CoinNearCondition implements TreeTask {
     private int upDistance;
 
     @Override
-    public boolean run(GameStateDto gameStateDto) {
-        int row = gameStateDto.getMarioEgoPosRow();
-        int col = gameStateDto.getMarioEgoPosCol();
+    public boolean run(TaskDto taskDto) {
+        int row = taskDto.getMarioEgoPosRow();
+        int col = taskDto.getMarioEgoPosCol();
 
         for (int i = 0; i <= leftDistance; i++) {
             for (int j = 0; j <= upDistance; j++) {
-                if (gameStateDto.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) return true;
+                if (taskDto.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                if (gameStateDto.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
+                if (taskDto.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
             }
         }
 
         for (int i = 0; i < rightDistance; i++) {
 
             for (int j = 0; j <= upDistance; j++) {
-                if (gameStateDto.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
+                if (taskDto.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                if (gameStateDto.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
+                if (taskDto.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
             }
         }
 

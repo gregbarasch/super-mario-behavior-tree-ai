@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="canshoot")
 public class CanShootCondition implements TreeTask {
     @Override
-    public boolean run(GameStateDto gameStateDto) {
-        return gameStateDto.environment.isMarioAbleToShoot();
+    public boolean run(TaskDto taskDto) {
+        return taskDto.environment.isMarioAbleToShoot();
     }
 }

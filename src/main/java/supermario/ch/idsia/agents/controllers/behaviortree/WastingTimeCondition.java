@@ -10,8 +10,8 @@ public class WastingTimeCondition implements TreeTask {
     private int timeTolerance;
 
     @Override
-    public boolean run(GameStateDto gameStateDto) {
-        int timeWasted = gameStateDto.environment.getTimeSpent() - gameStateDto.farthestProgressTimestamp;
+    public boolean run(TaskDto taskDto) {
+        int timeWasted = taskDto.environment.getTimeSpent() - taskDto.farthestProgressTimestamp;
         return timeWasted >= timeTolerance;
     }
 }

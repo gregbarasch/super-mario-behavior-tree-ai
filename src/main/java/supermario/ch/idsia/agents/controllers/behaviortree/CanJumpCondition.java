@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="canjump")
 public class CanJumpCondition implements TreeTask {
     @Override
-    public boolean run(GameStateDto gameStateDto) {
-        return gameStateDto.environment.isMarioAbleToJump()
-                || (!gameStateDto.environment.isMarioOnGround() && gameStateDto.action[Mario.KEY_JUMP]);
+    public boolean run(TaskDto taskDto) {
+        return taskDto.environment.isMarioAbleToJump()
+                || (!taskDto.environment.isMarioOnGround() && taskDto.action[Mario.KEY_JUMP]);
     }
 }

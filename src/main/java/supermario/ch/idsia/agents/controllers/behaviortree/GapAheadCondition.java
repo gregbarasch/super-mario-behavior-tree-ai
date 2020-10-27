@@ -15,18 +15,18 @@ public class GapAheadCondition implements TreeTask {
     private int downDistance;
 
     @Override
-    public boolean run(GameStateDto gameStateDto) {
-        if (!gameStateDto.environment.isMarioOnGround()) {
+    public boolean run(TaskDto taskDto) {
+        if (!taskDto.environment.isMarioOnGround()) {
             return false;
         }
 
-        int row = gameStateDto.getMarioEgoPosRow();
-        int col = gameStateDto.getMarioEgoPosCol();
-        int colItr = gameStateDto.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
+        int row = taskDto.getMarioEgoPosRow();
+        int col = taskDto.getMarioEgoPosCol();
+        int colItr = taskDto.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
 
         for (int i = colItr; i-colItr != colItr*aheadDistance; i+=colItr) {
             for (int j = 0; j <= downDistance; j++) {
-                int kind = gameStateDto.getReceptiveFieldCellValue(row+j, col+i);
+                int kind = taskDto.getReceptiveFieldCellValue(row+j, col+i);
                 if (kind == 0) return true;
             }
         }

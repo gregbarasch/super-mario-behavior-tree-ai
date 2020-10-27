@@ -12,17 +12,17 @@ public class MoveAction implements TreeTask {
     String direction;
 
     @Override
-    public boolean run(GameStateDto gameStateDto) {
+    public boolean run(TaskDto taskDto) {
 
         if ("reverse".equals(direction)) {
-            gameStateDto.action[Environment.MARIO_KEY_RIGHT] = !gameStateDto.action[Environment.MARIO_KEY_RIGHT];
-            gameStateDto.action[Environment.MARIO_KEY_LEFT] = !gameStateDto.action[Environment.MARIO_KEY_LEFT];
+            taskDto.action[Environment.MARIO_KEY_RIGHT] = !taskDto.action[Environment.MARIO_KEY_RIGHT];
+            taskDto.action[Environment.MARIO_KEY_LEFT] = !taskDto.action[Environment.MARIO_KEY_LEFT];
         } else if ("left".equals(direction)) {
-            gameStateDto.action[Environment.MARIO_KEY_RIGHT] = false;
-            gameStateDto.action[Environment.MARIO_KEY_LEFT] = true;
+            taskDto.action[Environment.MARIO_KEY_RIGHT] = false;
+            taskDto.action[Environment.MARIO_KEY_LEFT] = true;
         } else {
-            gameStateDto.action[Environment.MARIO_KEY_RIGHT] = true;
-            gameStateDto.action[Environment.MARIO_KEY_LEFT] = false;
+            taskDto.action[Environment.MARIO_KEY_RIGHT] = true;
+            taskDto.action[Environment.MARIO_KEY_LEFT] = false;
         }
 
         return true;

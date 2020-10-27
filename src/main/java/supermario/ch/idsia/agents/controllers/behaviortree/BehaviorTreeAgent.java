@@ -5,7 +5,7 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 public class BehaviorTreeAgent implements Agent {
 
-    private GameStateDto gameStateDto = new GameStateDto();
+    private TaskDto taskDto = new TaskDto();
     private final TreeTask root;
     private String name;
 
@@ -19,26 +19,26 @@ public class BehaviorTreeAgent implements Agent {
 
     @Override
     public void reset() {
-        gameStateDto = new GameStateDto();
+        taskDto = new TaskDto();
     }
 
     @Override
     public boolean[] getAction() {
-        root.run(gameStateDto);
-        return gameStateDto.action;
+        root.run(taskDto);
+        return taskDto.action;
     }
 
     @Override
     public void integrateObservation(Environment environment) {
         // First observation
-        gameStateDto.environment = environment;
-        gameStateDto.levelScene = environment.getLevelSceneObservationZ(Z_LEVEL_SCENE);
-        gameStateDto.enemies = environment.getEnemiesObservationZ(Z_LEVEL_ENEMIES);
+        taskDto.environment = environment;
+        taskDto.levelScene = environment.getLevelSceneObservationZ(Z_LEVEL_SCENE);
+        taskDto.enemies = environment.getEnemiesObservationZ(Z_LEVEL_ENEMIES);
 
-        float[] marioPos = gameStateDto.environment.getMarioFloatPos();
-        if (marioPos[0] > gameStateDto.farthestProgress) {
-            gameStateDto.farthestProgress = marioPos[0];
-            gameStateDto.farthestProgressTimestamp = environment.getTimeSpent();
+        float[] marioPos = taskDto.environment.getMarioFloatPos();
+        if (marioPos[0] > taskDto.farthestProgress) {
+            taskDto.farthestProgress = marioPos[0];
+            taskDto.farthestProgressTimestamp = environment.getTimeSpent();
         }
     }
 
