@@ -23,17 +23,17 @@
         <sequence>
             <coinnear left="5" up="3" down="3"/>
             <move>left</move>
-            <setmovementlock ticks="20"/>
+            <setmovementlock ticks="15"/>
         </sequence>
         <!-- Missed a stompable enemy? -->
         <sequence>
             <enemynear left="4" down="3" stompable="true"/>
             <move>left</move>
-            <setmovementlock ticks="20"/>
+            <setmovementlock ticks="15"/>
         </sequence>
         <!-- avoid enemy ahead? -->
         <sequence>
-            <enemyahead distance="4" up="4"/>
+            <enemyahead distance="2" up="4"/>
             <move>reverse</move>
         </sequence>
         <!-- otherwise move right. -->
@@ -56,11 +56,35 @@
             <isjumpfinished/>
             <land/>
         </sequence>
+
         <!-- Jump -->
         <sequence>
             <canjump/>
-            <jump/>
+
+            <selector>
+                <!-- do a stomp -->
+                <sequence>
+                    <enemyahead distance="4" down="3" stompable="true"/>
+                    <jump/>
+                </sequence>
+                <!-- jump over the enemy -->
+                <sequence>
+                    <enemyahead distance="2"/>
+                    <jump/>
+                </sequence>
+                <!-- jump to a coin -->
+                <sequence>
+                    <coinahead up="5"/>
+                    <jump/>
+                </sequence>
+                <!-- jump over the blocker -->
+                <sequence>
+                    <wallahead distance="2" up="1"/>
+                    <jump/>
+                </sequence>
+            </selector>
         </sequence>
+
     </selector>
 
 </sequence>

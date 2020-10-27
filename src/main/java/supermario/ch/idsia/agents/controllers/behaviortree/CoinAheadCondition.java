@@ -1,13 +1,14 @@
 package supermario.ch.idsia.agents.controllers.behaviortree;
 
-import supermario.ch.idsia.benchmark.mario.engine.sprites.Sprite;
 import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="enemyahead")
-public class EnemyAheadCondition implements TreeTask {
+import static supermario.ch.idsia.benchmark.mario.engine.GeneralizerLevelScene.COIN_ANIM;
+
+@XmlRootElement(name="coinahead")
+public class CoinAheadCondition implements TreeTask {
 
     @XmlAttribute(name="distance")
     private int aheadDistance;
@@ -17,9 +18,6 @@ public class EnemyAheadCondition implements TreeTask {
 
     @XmlAttribute(name="up")
     private int upDistance;
-
-    @XmlAttribute
-    private boolean stompable;
 
     @Override
     public boolean run() {
@@ -31,21 +29,16 @@ public class EnemyAheadCondition implements TreeTask {
         for (int i = colItr; i-colItr != colItr*aheadDistance; i+=colItr) {
 
             for (int j = 0; j <= upDistance; j++) {
-                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row-j, col+i);
-                if (isEnemyOfInterest(sprite)) return true;
+                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) System.out.println("forwardup");
+                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
             }
 
-            for (int j = 0; j <= downDistance; j++) {
-                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row+j, col+i);
-                if (isEnemyOfInterest(sprite)) return true;
+            for (int j = 1; j <= downDistance; j++) {
+                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) System.out.println("forwarddown");
+                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) return true;
             }
         }
 
         return false;
-    }
-
-    private boolean isEnemyOfInterest(int sprite) {
-        if (stompable) return Sprite.isStompableCreatureSprite(sprite);
-        return Sprite.isCreatureSprite(sprite);
     }
 }

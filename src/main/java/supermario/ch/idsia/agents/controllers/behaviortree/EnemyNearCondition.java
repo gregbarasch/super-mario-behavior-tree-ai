@@ -28,28 +28,28 @@ public class EnemyNearCondition implements TreeTask {
         int row = BehaviorTreeAgent.blackboard.getMarioEgoPosRow();
         int col = BehaviorTreeAgent.blackboard.getMarioEgoPosCol();
 
-        for (int i = 1; i <= leftDistance+1; i++) {
+        for (int i = 0; i <= leftDistance; i++) {
             for (int j = 0; j <= upDistance; j++) {
                 int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row+j, col-i);
                 if (isEnemyOfInterest(sprite)) return true;
             }
 
-            for (int j = 1; j <= downDistance; j++) {
+            for (int j = 0; j <= downDistance; j++) {
                 int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row-j, col-i);
                 if (isEnemyOfInterest(sprite)) return true;
             }
         }
 
-        for (int i = 1; i < rightDistance+1; i++) {
+        for (int i = 0; i <= rightDistance; i++) {
 
             for (int j = 0; j <= upDistance; j++) {
-                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row+j, col+i);
+                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row-j, col+i);
                 if (isEnemyOfInterest(sprite)) return true;
 
             }
 
             for (int j = 1; j <= downDistance; j++) {
-                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row-j, col+i);
+                int sprite = BehaviorTreeAgent.blackboard.getEnemiesCellValue(row+j, col+i);
                 if (isEnemyOfInterest(sprite)) return true;
             }
         }

@@ -25,29 +25,24 @@ public class CoinNearCondition implements TreeTask {
         int row = BehaviorTreeAgent.blackboard.getMarioEgoPosRow();
         int col = BehaviorTreeAgent.blackboard.getMarioEgoPosCol();
 
-        for (int i = 1; i <= leftDistance+1; i++) {
+        for (int i = 0; i <= leftDistance; i++) {
             for (int j = 0; j <= upDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) System.out.println("leftup");;
+                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) return true;
             }
 
-            for (int j = 1; j <= downDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) return true;
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) System.out.println("leftdown");
+            for (int j = 0; j <= downDistance; j++) {
+                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
             }
         }
 
-        for (int i = 1; i < rightDistance+1; i++) {
+        for (int i = 0; i < rightDistance; i++) {
 
             for (int j = 0; j <= upDistance; j++) {
-                System.out.println(BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i));
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) return true;
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) System.out.println("rightup");
+                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
             }
 
-            for (int j = 1; j <= downDistance; j++) {
+            for (int j = 0; j <= downDistance; j++) {
                 if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) System.out.println("rightdown");
             }
         }
 
