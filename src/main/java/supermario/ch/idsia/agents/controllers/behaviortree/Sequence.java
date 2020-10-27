@@ -1,7 +1,5 @@
 package supermario.ch.idsia.agents.controllers.behaviortree;
 
-import supermario.ch.idsia.benchmark.mario.environments.Environment;
-
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -12,9 +10,9 @@ public class Sequence implements TreeTask {
     private TreeTask[] children;
 
     @Override
-    public boolean run(Blackboard blackboard) {
+    public boolean run(GameStateDto gameStateDto) {
         for (TreeTask child : children) {
-            if (!child.run(blackboard)) {
+            if (!child.run(gameStateDto)) {
                 return false;
             }
         }

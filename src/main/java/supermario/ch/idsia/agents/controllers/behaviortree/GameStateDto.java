@@ -2,7 +2,7 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 
 import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
-class Blackboard {
+class GameStateDto {
 
     boolean[] action = new boolean[Environment.numberOfKeys];
 

@@ -10,8 +10,8 @@ public class SetMovementSemaphoreAction implements TreeTask {
     private int lockTicks;
 
     @Override
-    public boolean run(Blackboard blackboard) {
-        blackboard.movementSemaphore = lockTicks;
+    public boolean run(GameStateDto gameStateDto) {
+        gameStateDto.movementSemaphore = lockTicks;
         return true;
     }
 }

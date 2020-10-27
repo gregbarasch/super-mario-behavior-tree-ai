@@ -24,18 +24,18 @@ public class EnemyNearCondition implements TreeTask {
     private boolean stompable;
 
     @Override
-    public boolean run(Blackboard blackboard) {
-        int row = blackboard.getMarioEgoPosRow();
-        int col = blackboard.getMarioEgoPosCol();
+    public boolean run(GameStateDto gameStateDto) {
+        int row = gameStateDto.getMarioEgoPosRow();
+        int col = gameStateDto.getMarioEgoPosCol();
 
         for (int i = 0; i <= leftDistance; i++) {
             for (int j = 0; j <= upDistance; j++) {
-                int sprite = blackboard.getEnemiesCellValue(row+j, col-i);
+                int sprite = gameStateDto.getEnemiesCellValue(row+j, col-i);
                 if (isEnemyOfInterest(sprite)) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                int sprite = blackboard.getEnemiesCellValue(row-j, col-i);
+                int sprite = gameStateDto.getEnemiesCellValue(row-j, col-i);
                 if (isEnemyOfInterest(sprite)) return true;
             }
         }
@@ -43,13 +43,13 @@ public class EnemyNearCondition implements TreeTask {
         for (int i = 0; i <= rightDistance; i++) {
 
             for (int j = 0; j <= upDistance; j++) {
-                int sprite = blackboard.getEnemiesCellValue(row-j, col+i);
+                int sprite = gameStateDto.getEnemiesCellValue(row-j, col+i);
                 if (isEnemyOfInterest(sprite)) return true;
 
             }
 
             for (int j = 1; j <= downDistance; j++) {
-                int sprite = blackboard.getEnemiesCellValue(row+j, col+i);
+                int sprite = gameStateDto.getEnemiesCellValue(row+j, col+i);
                 if (isEnemyOfInterest(sprite)) return true;
             }
         }

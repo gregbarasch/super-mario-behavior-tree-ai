@@ -20,19 +20,19 @@ public class CoinAheadCondition implements TreeTask {
     private int upDistance;
 
     @Override
-    public boolean run(Blackboard blackboard) {
-        int row = blackboard.getMarioEgoPosRow();
-        int col = blackboard.getMarioEgoPosCol();
-        int colItr = blackboard.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
+    public boolean run(GameStateDto gameStateDto) {
+        int row = gameStateDto.getMarioEgoPosRow();
+        int col = gameStateDto.getMarioEgoPosCol();
+        int colItr = gameStateDto.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
 
         for (int i = colItr; i-colItr != colItr*aheadDistance; i+=colItr) {
 
             for (int j = 0; j <= upDistance; j++) {
-                if (blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
+                if (gameStateDto.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
             }
 
             for (int j = 1; j <= downDistance; j++) {
-                if (blackboard.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) return true;
+                if (gameStateDto.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) return true;
             }
         }
 

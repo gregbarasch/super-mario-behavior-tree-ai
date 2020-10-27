@@ -2,12 +2,10 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import static supermario.ch.idsia.benchmark.mario.engine.GeneralizerLevelScene.COIN_ANIM;
-
 @XmlRootElement(name="movementlocked")
 public class MovementLockedCondition implements TreeTask {
     @Override
-    public boolean run(Blackboard blackboard) {
-        return blackboard.movementSemaphore > 0;
+    public boolean run(GameStateDto gameStateDto) {
+        return gameStateDto.movementSemaphore > 0;
     }
 }

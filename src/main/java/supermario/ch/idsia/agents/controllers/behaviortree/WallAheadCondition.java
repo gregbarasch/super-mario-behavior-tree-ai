@@ -6,8 +6,6 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import static supermario.ch.idsia.benchmark.mario.engine.GeneralizerLevelScene.COIN_ANIM;
-
 @XmlRootElement(name="wallahead")
 public class WallAheadCondition implements TreeTask {
 
@@ -21,20 +19,20 @@ public class WallAheadCondition implements TreeTask {
     private int upDistance;
 
     @Override
-    public boolean run(Blackboard blackboard) {
-        int row = blackboard.getMarioEgoPosRow();
-        int col = blackboard.getMarioEgoPosCol();
+    public boolean run(GameStateDto gameStateDto) {
+        int row = gameStateDto.getMarioEgoPosRow();
+        int col = gameStateDto.getMarioEgoPosCol();
 
-        int colItr = blackboard.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
+        int colItr = gameStateDto.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
 
         for (int i = colItr; i-colItr != colItr*aheadDistance; i+=colItr) {
             for (int j = 0; j <= upDistance; j++) {
-                int kind = blackboard.getReceptiveFieldCellValue(row-j, col+i);
+                int kind = gameStateDto.getReceptiveFieldCellValue(row-j, col+i);
                 if (isBlocker(kind)) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                int kind = blackboard.getReceptiveFieldCellValue(row+j, col+i);
+                int kind = gameStateDto.getReceptiveFieldCellValue(row+j, col+i);
                 if (isBlocker(kind)) return true;
             }
         }
