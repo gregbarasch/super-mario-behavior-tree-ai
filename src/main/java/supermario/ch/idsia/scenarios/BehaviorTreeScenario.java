@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.Random;
 
 public class BehaviorTreeScenario {
 
@@ -19,7 +20,7 @@ public class BehaviorTreeScenario {
 
                 CanJumpCondition.class, DoneJumpingCondition.class, CanShootCondition.class, EnemyAheadCondition.class,
                 EnemyNearCondition.class, CoinAheadCondition.class, CoinNearCondition.class, MovementLockedCondition.class,
-                WallAheadCondition.class, WastingTimeCondition.class, RunningOutOfTimeCondition.class,
+                WallAheadCondition.class, GapAheadCondition.class, WastingTimeCondition.class, RunningOutOfTimeCondition.class,
 
                 JumpAction.class, LandAction.class, MoveAction.class, ShootAction.class, ShootCompleteAction.class,
                 DecrementMovementSemaphoreAction.class, SetMovementSemaphoreAction.class
@@ -33,9 +34,9 @@ public class BehaviorTreeScenario {
         // Options
         final MarioAIOptions options = new MarioAIOptions(args);
         options.setAgent(agent);
-//        options.setLevelDifficulty(1);
-//        int level = 5; //Math.abs(new Random().nextInt());
-//        options.setLevelRandSeed(level);
+        options.setLevelDifficulty(0);
+        int level = Math.abs(new Random().nextInt());
+        options.setLevelRandSeed(level);
 
         // Env
         Environment environment = MarioEnvironment.getInstance();

@@ -9,31 +9,26 @@
             <movementlocked/>
             <decrementmovementlock/>
         </sequence>
-        <!-- running out of time, move right. -->
+        <!-- running out or wasting time? move right. -->
         <sequence>
-            <timerunningout tolerance="20"/>
+            <selector>
+                <timerunningout tolerance="25"/>
+                <wastingtime tolerance="8"/>
+            </selector>
             <move>right</move>
         </sequence>
-        <!-- wasting time? Let's make some progress -->
+        <!-- Go back to grab coin or kill a stompable enemy? -->
         <sequence>
-            <wastingtime tolerance="8"/>
-            <move>right</move>
-        </sequence>
-        <!-- Go back to grab coin? -->
-        <sequence>
-            <coinnear left="5" up="3" down="3"/>
+            <selector>
+                <coinnear left="5" up="3" down="3"/>
+                <enemynear left="4" down="10" stompable="true"/>
+            </selector>
             <move>left</move>
-            <setmovementlock ticks="15"/>
-        </sequence>
-        <!-- Missed a stompable enemy? -->
-        <sequence>
-            <enemynear left="4" down="3" stompable="true"/>
-            <move>left</move>
-            <setmovementlock ticks="15"/>
+            <setmovementlock ticks="10"/>
         </sequence>
         <!-- avoid enemy ahead? -->
         <sequence>
-            <enemyahead distance="2" up="4"/>
+            <enemyahead ahead="2" up="5"/>
             <move>reverse</move>
         </sequence>
         <!-- otherwise move right. -->
@@ -62,29 +57,20 @@
             <canjump/>
 
             <selector>
-                <!-- do a stomp -->
-                <sequence>
-                    <enemyahead distance="4" down="3" stompable="true"/>
-                    <jump/>
-                </sequence>
-                <!-- jump over the enemy -->
-                <sequence>
-                    <enemyahead distance="2"/>
-                    <jump/>
-                </sequence>
-                <!-- jump to a coin -->
-                <sequence>
-                    <coinahead up="5"/>
-                    <jump/>
-                </sequence>
-                <!-- jump over the blocker -->
-                <sequence>
-                    <wallahead distance="2" up="1"/>
-                    <jump/>
-                </sequence>
+                <!-- gap ahead? (Skipping this check for now) -->
+                <!-- gapahead ahead="2" down="5"/ -->
+                <!-- wall / blocker ahead? -->
+                <wallahead ahead="2" up="1"/>
+                <!-- do a stomp? -->
+                <enemyahead ahead="4" down="10" stompable="true"/>
+                <!-- jump over spiky boy? -->
+                <enemyahead ahead="2"/>
+                <!-- coin above? -->
+                <coinnear up="4"/>
             </selector>
-        </sequence>
 
+            <jump/>
+        </sequence>
     </selector>
 
 </sequence>

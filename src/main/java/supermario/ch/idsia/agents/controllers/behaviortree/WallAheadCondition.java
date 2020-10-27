@@ -11,7 +11,7 @@ import static supermario.ch.idsia.benchmark.mario.engine.GeneralizerLevelScene.C
 @XmlRootElement(name="wallahead")
 public class WallAheadCondition implements TreeTask {
 
-    @XmlAttribute(name="distance")
+    @XmlAttribute(name="ahead")
     private int aheadDistance;
 
     @XmlAttribute(name="down")

@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="enemyahead")
 public class EnemyAheadCondition implements TreeTask {
 
-    @XmlAttribute(name="distance")
+    @XmlAttribute(name="ahead")
     private int aheadDistance;
 
     @XmlAttribute(name="down")
@@ -25,7 +25,6 @@ public class EnemyAheadCondition implements TreeTask {
     public boolean run() {
         int row = BehaviorTreeAgent.blackboard.getMarioEgoPosRow();
         int col = BehaviorTreeAgent.blackboard.getMarioEgoPosCol();
-
         int colItr = BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
 
         for (int i = colItr; i-colItr != colItr*aheadDistance; i+=colItr) {
