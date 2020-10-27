@@ -3,26 +3,26 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 import supermario.ch.idsia.agents.Agent;
 import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
-public class BehaviorTreeAgent implements Agent {
+public enum BehaviorTreeAgent implements Agent {
 
-    static final Blackboard blackboard = new Blackboard();
-    private final TreeTask root;
+    INSTANCE;
+
+    static Blackboard blackboard = new Blackboard();
+    private TreeTask root;
     private String name;
 
     private static final int Z_LEVEL_SCENE = 1;
     private static final int Z_LEVEL_ENEMIES = 0;
 
-    public BehaviorTreeAgent(String name, TreeTask root) {
-        this.name = name;
-        this.root = root;
-        blackboard.action = new boolean[Environment.numberOfKeys];
+    BehaviorTreeAgent() {}
 
-        reset();
+    public void setRoot(TreeTask root) {
+        this.root = root;
     }
 
     @Override
     public void reset() {
-        blackboard.action = new boolean[Environment.numberOfKeys];
+        blackboard = new Blackboard();
     }
 
     @Override

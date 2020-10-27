@@ -4,7 +4,7 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 class Blackboard {
 
-    boolean[] action;
+    boolean[] action = new boolean[Environment.numberOfKeys];
 
     Environment environment;
     byte[][] levelScene;

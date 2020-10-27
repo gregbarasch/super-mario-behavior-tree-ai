@@ -29,7 +29,9 @@ public class BehaviorTreeScenario {
 
         // Agent
         TreeTask root = (TreeTask) unmarshaller.unmarshal(new File("src/main/java/supermario/ch/idsia/agents/controllers/behaviortree/resources/t1.xml"));
-        BehaviorTreeAgent agent = new BehaviorTreeAgent("BTree Test", root);
+        BehaviorTreeAgent agent = BehaviorTreeAgent.INSTANCE;
+        agent.setName("BTree Test");
+        agent.setRoot(root);
 
         // Options
         final MarioAIOptions options = new MarioAIOptions(args);

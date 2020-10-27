@@ -28,12 +28,10 @@ public class CoinAheadCondition implements TreeTask {
         for (int i = colItr; i-colItr != colItr*aheadDistance; i+=colItr) {
 
             for (int j = 0; j <= upDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) System.out.println("forwardup");
                 if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
             }
 
             for (int j = 1; j <= downDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) System.out.println("forwarddown");
                 if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i) == COIN_ANIM) return true;
             }
         }
