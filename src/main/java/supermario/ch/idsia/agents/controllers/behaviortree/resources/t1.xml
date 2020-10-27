@@ -28,7 +28,7 @@
         </sequence>
         <!-- avoid enemy ahead? -->
         <sequence>
-            <enemyahead ahead="2" up="5"/>
+            <enemyahead ahead="3" up="5"/>
             <move>reverse</move>
         </sequence>
         <!-- otherwise move right. -->
@@ -62,7 +62,7 @@
                 <!-- wall / blocker ahead? -->
                 <wallahead ahead="2" up="1"/>
                 <!-- do a stomp? -->
-                <enemyahead ahead="4" down="10" stompable="true"/>
+                <enemyahead ahead="3" down="10" stompable="true"/>
                 <!-- jump over spiky boy? -->
                 <enemyahead ahead="2"/>
                 <!-- coin above? -->
