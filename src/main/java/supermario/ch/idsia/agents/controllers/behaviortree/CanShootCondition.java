@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="canshoot")
 public class CanShootCondition implements TreeTask {
     @Override
-    public boolean run() {
-        return BehaviorTreeAgent.blackboard.environment.isMarioAbleToShoot();
+    public boolean run(Blackboard blackboard) {
+        return blackboard.environment.isMarioAbleToShoot();
     }
 }

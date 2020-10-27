@@ -15,12 +15,12 @@ class Blackboard {
     int farthestProgressTimestamp;
 
     int getMarioEgoPosRow() {
-        int[] egoPos = BehaviorTreeAgent.blackboard.environment.getMarioEgoPos();
+        int[] egoPos = environment.getMarioEgoPos();
         return egoPos[0];
     }
 
     int getMarioEgoPosCol() {
-        int[] egoPos = BehaviorTreeAgent.blackboard.environment.getMarioEgoPos();
+        int[] egoPos = environment.getMarioEgoPos();
         return egoPos[1];
     }
 

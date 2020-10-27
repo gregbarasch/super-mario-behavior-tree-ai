@@ -21,20 +21,20 @@ public class WallAheadCondition implements TreeTask {
     private int upDistance;
 
     @Override
-    public boolean run() {
-        int row = BehaviorTreeAgent.blackboard.getMarioEgoPosRow();
-        int col = BehaviorTreeAgent.blackboard.getMarioEgoPosCol();
+    public boolean run(Blackboard blackboard) {
+        int row = blackboard.getMarioEgoPosRow();
+        int col = blackboard.getMarioEgoPosCol();
 
-        int colItr = BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
+        int colItr = blackboard.action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
 
         for (int i = colItr; i-colItr != colItr*aheadDistance; i+=colItr) {
             for (int j = 0; j <= upDistance; j++) {
-                int kind = BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col+i);
+                int kind = blackboard.getReceptiveFieldCellValue(row-j, col+i);
                 if (isBlocker(kind)) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                int kind = BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col+i);
+                int kind = blackboard.getReceptiveFieldCellValue(row+j, col+i);
                 if (isBlocker(kind)) return true;
             }
         }

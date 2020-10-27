@@ -1,5 +1,5 @@
 package supermario.ch.idsia.agents.controllers.behaviortree;
 
 public interface TreeTask {
-    boolean run();
+    boolean run(Blackboard blackboard);
 }

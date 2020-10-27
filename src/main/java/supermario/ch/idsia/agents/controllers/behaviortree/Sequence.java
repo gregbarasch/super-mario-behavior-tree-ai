@@ -12,9 +12,9 @@ public class Sequence implements TreeTask {
     private TreeTask[] children;
 
     @Override
-    public boolean run() {
+    public boolean run(Blackboard blackboard) {
         for (TreeTask child : children) {
-            if (!child.run()) {
+            if (!child.run(blackboard)) {
                 return false;
             }
         }

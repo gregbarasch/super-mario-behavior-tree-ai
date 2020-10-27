@@ -7,7 +7,7 @@ import static supermario.ch.idsia.benchmark.mario.engine.GeneralizerLevelScene.C
 @XmlRootElement(name="movementlocked")
 public class MovementLockedCondition implements TreeTask {
     @Override
-    public boolean run() {
-        return BehaviorTreeAgent.blackboard.movementSemaphore > 0;
+    public boolean run(Blackboard blackboard) {
+        return blackboard.movementSemaphore > 0;
     }
 }

@@ -21,28 +21,28 @@ public class CoinNearCondition implements TreeTask {
     private int upDistance;
 
     @Override
-    public boolean run() {
-        int row = BehaviorTreeAgent.blackboard.getMarioEgoPosRow();
-        int col = BehaviorTreeAgent.blackboard.getMarioEgoPosCol();
+    public boolean run(Blackboard blackboard) {
+        int row = blackboard.getMarioEgoPosRow();
+        int col = blackboard.getMarioEgoPosCol();
 
         for (int i = 0; i <= leftDistance; i++) {
             for (int j = 0; j <= upDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) return true;
+                if (blackboard.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
+                if (blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
             }
         }
 
         for (int i = 0; i < rightDistance; i++) {
 
             for (int j = 0; j <= upDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
+                if (blackboard.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                if (BehaviorTreeAgent.blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
+                if (blackboard.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
             }
         }
 

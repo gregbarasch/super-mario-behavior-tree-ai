@@ -10,7 +10,7 @@ public class RunningOutOfTimeCondition implements TreeTask {
     private int timeTolerance;
 
     @Override
-    public boolean run() {
-        return BehaviorTreeAgent.blackboard.environment.getTimeLeft() <= timeTolerance;
+    public boolean run(Blackboard blackboard) {
+        return blackboard.environment.getTimeLeft() <= timeTolerance;
     }
 }

@@ -13,17 +13,17 @@ public class MoveAction implements TreeTask {
     String direction;
 
     @Override
-    public boolean run() {
+    public boolean run(Blackboard blackboard) {
 
         if ("reverse".equals(direction)) {
-            BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] = !BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT];
-            BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_LEFT] = !BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_LEFT];
+            blackboard.action[Environment.MARIO_KEY_RIGHT] = !blackboard.action[Environment.MARIO_KEY_RIGHT];
+            blackboard.action[Environment.MARIO_KEY_LEFT] = !blackboard.action[Environment.MARIO_KEY_LEFT];
         } else if ("left".equals(direction)) {
-            BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] = false;
-            BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_LEFT] = true;
+            blackboard.action[Environment.MARIO_KEY_RIGHT] = false;
+            blackboard.action[Environment.MARIO_KEY_LEFT] = true;
         } else {
-            BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_RIGHT] = true;
-            BehaviorTreeAgent.blackboard.action[Environment.MARIO_KEY_LEFT] = false;
+            blackboard.action[Environment.MARIO_KEY_RIGHT] = true;
+            blackboard.action[Environment.MARIO_KEY_LEFT] = false;
         }
 
         return true;
