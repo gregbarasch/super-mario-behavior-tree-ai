@@ -5,6 +5,8 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlValue;
 
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.blackboard;
+
 @XmlRootElement(name="move")
 public class MoveAction implements TreeTask {
 
@@ -12,17 +14,17 @@ public class MoveAction implements TreeTask {
     String direction;
 
     @Override
-    public boolean run(TaskDto taskDto) {
-
+    public boolean run() {
+        boolean[] action = BehaviorTree.BlackboardHelper.getAction(blackboard);
         if ("reverse".equals(direction)) {
-            taskDto.action[Environment.MARIO_KEY_RIGHT] = !taskDto.action[Environment.MARIO_KEY_RIGHT];
-            taskDto.action[Environment.MARIO_KEY_LEFT] = !taskDto.action[Environment.MARIO_KEY_LEFT];
+            action[Environment.MARIO_KEY_RIGHT] = !action[Environment.MARIO_KEY_RIGHT];
+            action[Environment.MARIO_KEY_LEFT] = !action[Environment.MARIO_KEY_LEFT];
         } else if ("left".equals(direction)) {
-            taskDto.action[Environment.MARIO_KEY_RIGHT] = false;
-            taskDto.action[Environment.MARIO_KEY_LEFT] = true;
+            action[Environment.MARIO_KEY_RIGHT] = false;
+            action[Environment.MARIO_KEY_LEFT] = true;
         } else {
-            taskDto.action[Environment.MARIO_KEY_RIGHT] = true;
-            taskDto.action[Environment.MARIO_KEY_LEFT] = false;
+            action[Environment.MARIO_KEY_RIGHT] = true;
+            action[Environment.MARIO_KEY_LEFT] = false;
         }
 
         return true;

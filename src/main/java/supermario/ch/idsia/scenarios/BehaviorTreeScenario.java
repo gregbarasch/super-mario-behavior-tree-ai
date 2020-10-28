@@ -5,38 +5,21 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 import supermario.ch.idsia.benchmark.mario.environments.MarioEnvironment;
 import supermario.ch.idsia.tools.MarioAIOptions;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
 import java.util.Random;
 
 public class BehaviorTreeScenario {
 
     public static void main(String[] args) throws JAXBException {
-        // JAXB
-        JAXBContext context = JAXBContext.newInstance(
-                Selector.class, Sequence.class,
-
-                CanJumpCondition.class, DoneJumpingCondition.class, CanShootCondition.class, EnemyAheadCondition.class,
-                EnemyNearCondition.class, CoinAheadCondition.class, CoinNearCondition.class, MovementLockedCondition.class,
-                WallAheadCondition.class, GapAheadCondition.class, WastingTimeCondition.class, RunningOutOfTimeCondition.class,
-
-                JumpAction.class, LandAction.class, MoveAction.class, ShootAction.class, ShootCompleteAction.class,
-                DecrementMovementSemaphoreAction.class, SetMovementSemaphoreAction.class
-        );
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-
         // Agent
-        TreeTask root = (TreeTask) unmarshaller.unmarshal(new File("src/main/java/supermario/ch/idsia/agents/controllers/behaviortree/resources/t1.xml"));
-        BehaviorTreeAgent agent = new BehaviorTreeAgent("BTree Test", root);
+        BehaviorTreeAgent agent = new BehaviorTreeAgent("BTree Test", "src/main/java/supermario/ch/idsia/agents/controllers/behaviortree/resources/t1.xml");
 
         // Options
         final MarioAIOptions options = new MarioAIOptions(args);
-        options.setAgent(agent);
-        options.setLevelDifficulty(0);
-        int level = Math.abs(new Random(System.currentTimeMillis()).nextInt());
-        options.setLevelRandSeed(level);
+//        options.setAgent(agent);
+//        options.setLevelDifficulty(0);
+//        int level = Math.abs(new Random(System.currentTimeMillis()).nextInt());
+//        options.setLevelRandSeed(level);
 
         // Env
         Environment environment = MarioEnvironment.getInstance();

@@ -4,10 +4,14 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+
 @XmlRootElement(name="isjumpfinished")
 public class DoneJumpingCondition implements TreeTask {
     @Override
-    public boolean run(TaskDto taskDto) {
-        return taskDto.environment.isMarioOnGround() && taskDto.action[Environment.MARIO_KEY_JUMP];
+    public boolean run() {
+        Environment environment =  BlackboardHelper.getEnvironment(blackboard);
+        boolean[] action = BlackboardHelper.getAction(blackboard);
+        return environment.isMarioOnGround() && action[Environment.MARIO_KEY_JUMP];
     }
 }

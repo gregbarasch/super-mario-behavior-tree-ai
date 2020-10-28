@@ -3,6 +3,8 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+
 @XmlRootElement(name="wastingtime")
 public class WastingTimeCondition implements TreeTask {
 
@@ -10,8 +12,8 @@ public class WastingTimeCondition implements TreeTask {
     private int timeTolerance;
 
     @Override
-    public boolean run(TaskDto taskDto) {
-        int timeWasted = taskDto.environment.getTimeSpent() - taskDto.farthestProgressTimestamp;
+    public boolean run() {
+        int timeWasted = BlackboardHelper.getEnvironment(blackboard).getTimeSpent() - BlackboardHelper.getFarthestProgressTimetamp(blackboard);
         return timeWasted >= timeTolerance;
     }
 }

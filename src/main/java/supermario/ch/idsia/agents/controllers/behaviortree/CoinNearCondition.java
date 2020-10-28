@@ -3,6 +3,7 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
 import static supermario.ch.idsia.benchmark.mario.engine.GeneralizerLevelScene.COIN_ANIM;
 
 @XmlRootElement(name="coinnear")
@@ -21,28 +22,28 @@ public class CoinNearCondition implements TreeTask {
     private int upDistance;
 
     @Override
-    public boolean run(TaskDto taskDto) {
-        int row = taskDto.getMarioEgoPosRow();
-        int col = taskDto.getMarioEgoPosCol();
+    public boolean run() {
+        int row = BlackboardHelper.getMarioEgoPosRow(blackboard);
+        int col = BlackboardHelper.getMarioEgoPosCol(blackboard);
 
         for (int i = 0; i <= leftDistance; i++) {
             for (int j = 0; j <= upDistance; j++) {
-                if (taskDto.getReceptiveFieldCellValue(row-j, col-i) == COIN_ANIM) return true;
+                if (BlackboardHelper.getReceptiveFieldCellValue(blackboard, row-j, col-i) == COIN_ANIM) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                if (taskDto.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
+                if (BlackboardHelper.getReceptiveFieldCellValue(blackboard, row+j, col-i) == COIN_ANIM) return true;
             }
         }
 
         for (int i = 0; i < rightDistance; i++) {
 
             for (int j = 0; j <= upDistance; j++) {
-                if (taskDto.getReceptiveFieldCellValue(row-j, col+i) == COIN_ANIM) return true;
+                if (BlackboardHelper.getReceptiveFieldCellValue(blackboard, row-j, col+i) == COIN_ANIM) return true;
             }
 
             for (int j = 0; j <= downDistance; j++) {
-                if (taskDto.getReceptiveFieldCellValue(row+j, col-i) == COIN_ANIM) return true;
+                if (BlackboardHelper.getReceptiveFieldCellValue(blackboard, row+j, col-i) == COIN_ANIM) return true;
             }
         }
 

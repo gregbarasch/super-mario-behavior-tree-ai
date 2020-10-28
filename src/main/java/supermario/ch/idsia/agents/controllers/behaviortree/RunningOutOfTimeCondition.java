@@ -3,6 +3,8 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+
 @XmlRootElement(name="timerunningout")
 public class RunningOutOfTimeCondition implements TreeTask {
 
@@ -10,7 +12,7 @@ public class RunningOutOfTimeCondition implements TreeTask {
     private int timeTolerance;
 
     @Override
-    public boolean run(TaskDto taskDto) {
-        return taskDto.environment.getTimeLeft() <= timeTolerance;
+    public boolean run() {
+        return BlackboardHelper.getEnvironment(blackboard).getTimeLeft() <= timeTolerance;
     }
 }

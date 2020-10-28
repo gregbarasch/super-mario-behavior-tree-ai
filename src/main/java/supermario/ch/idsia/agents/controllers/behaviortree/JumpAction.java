@@ -4,11 +4,13 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+
 @XmlRootElement(name="jump")
 public class JumpAction implements TreeTask {
     @Override
-    public boolean run(TaskDto taskDto) {
-        taskDto.action[Environment.MARIO_KEY_JUMP] = true;
+    public boolean run() {
+        BlackboardHelper.getAction(blackboard)[Environment.MARIO_KEY_JUMP] = true;
         return true;
     }
 }

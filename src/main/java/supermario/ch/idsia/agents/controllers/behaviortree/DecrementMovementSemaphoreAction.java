@@ -2,11 +2,13 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+
 @XmlRootElement(name="decrementmovementlock")
 public class DecrementMovementSemaphoreAction implements TreeTask {
     @Override
-    public boolean run(TaskDto taskDto) {
-        taskDto.movementSemaphore--;
+    public boolean run() {
+        BlackboardHelper.decrementMovementSempahore(blackboard);
         return true;
     }
 }
