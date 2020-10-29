@@ -10,7 +10,7 @@ import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.b
 public class ShootCompleteAction implements TreeTask {
     @Override
     public boolean run() {
-        BehaviorTree.BlackboardHelper.getAction(blackboard)[Environment.MARIO_KEY_SPEED] = false;
+        BlackboardHelper.getAction(blackboard)[Environment.MARIO_KEY_SPEED] = false;
         return true;
     }
 }

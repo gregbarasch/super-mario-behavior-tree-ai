@@ -15,7 +15,7 @@ public class MoveAction implements TreeTask {
 
     @Override
     public boolean run() {
-        boolean[] action = BehaviorTree.BlackboardHelper.getAction(blackboard);
+        boolean[] action = BlackboardHelper.getAction(blackboard);
         if ("reverse".equals(direction)) {
             action[Environment.MARIO_KEY_RIGHT] = !action[Environment.MARIO_KEY_RIGHT];
             action[Environment.MARIO_KEY_LEFT] = !action[Environment.MARIO_KEY_LEFT];

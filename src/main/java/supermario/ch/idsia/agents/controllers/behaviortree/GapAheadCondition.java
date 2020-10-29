@@ -2,7 +2,7 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 
 import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
-import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.blackboard;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;

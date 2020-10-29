@@ -6,7 +6,7 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.blackboard;
 
 @XmlRootElement(name="wallahead")
 public class WallAheadCondition implements TreeTask {
@@ -22,10 +22,10 @@ public class WallAheadCondition implements TreeTask {
 
     @Override
     public boolean run() {
-        boolean[] action = BehaviorTree.BlackboardHelper.getAction(blackboard);
+        boolean[] action = BlackboardHelper.getAction(blackboard);
 
-        int row = BehaviorTree.BlackboardHelper.getMarioEgoPosRow(blackboard);
-        int col = BehaviorTree.BlackboardHelper.getMarioEgoPosCol(blackboard);
+        int row = BlackboardHelper.getMarioEgoPosRow(blackboard);
+        int col = BlackboardHelper.getMarioEgoPosCol(blackboard);
         int colItr = action[Environment.MARIO_KEY_RIGHT] ? 1 : -1;
 
 

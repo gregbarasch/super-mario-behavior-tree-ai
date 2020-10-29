@@ -5,7 +5,8 @@ import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.blackboard;
+
 
 @XmlRootElement(name="canjump")
 public class CanJumpCondition implements TreeTask {

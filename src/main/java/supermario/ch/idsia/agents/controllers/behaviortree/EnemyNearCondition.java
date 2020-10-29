@@ -5,7 +5,7 @@ import supermario.ch.idsia.benchmark.mario.engine.sprites.Sprite;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.blackboard;
 
 @XmlRootElement(name="enemynear")
 public class EnemyNearCondition implements TreeTask {

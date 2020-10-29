@@ -16,7 +16,7 @@ public class BehaviorTreeScenario {
 
         // Options
         final MarioAIOptions options = new MarioAIOptions(args);
-//        options.setAgent(agent);
+        options.setAgent(agent);
 //        options.setLevelDifficulty(0);
 //        int level = Math.abs(new Random(System.currentTimeMillis()).nextInt());
 //        options.setLevelRandSeed(level);

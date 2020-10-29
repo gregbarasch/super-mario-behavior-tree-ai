@@ -3,9 +3,9 @@ package supermario.ch.idsia.agents.controllers.behaviortree;
 import supermario.ch.idsia.agents.Agent;
 import supermario.ch.idsia.benchmark.mario.environments.Environment;
 
-import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.*;
-
 import javax.xml.bind.JAXBException;
+
+import static supermario.ch.idsia.agents.controllers.behaviortree.BehaviorTree.blackboard;
 
 public class BehaviorTreeAgent implements Agent {
 
